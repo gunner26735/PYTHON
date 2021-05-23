@@ -18,4 +18,3 @@ for getimg in resimage:
     #img = Image.open(BytesIO(img_obj.content))
     #img.save("WebScrapping/scraped_images/"+str(num),img.format)
     num +=1
-
