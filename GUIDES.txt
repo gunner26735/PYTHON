@@ -1,0 +1,22 @@
+Some quick tips:
+    1) To install any Package for Pytho Go To PyPi
+    2) To install directly from CLI write "python -m pip install module_name"
+
+WEB Scrapping:
+    In this we are using BeautifulSoup library of bs4
+    Steps:
+        1)get the request fro requests class
+        2) fetch the search result 
+        3) To print it use requests.text variable 
+        4) through .prettify() (of BeautifulSoup) print the data EX:  "  fettchsoup = BeautifulSoup(r.text, "html.parser") "
+
+    Another thing to scrap out some specific content then we have to use find method 
+    For example look in WebScarpping/specific_scraping file
+
+-> Image Scraping:
+    A sub part of Web Scraping: as name sugest we scrape the image from URl.
+    For this we requests library same as above steps then with the help of Image library of PIL(pillow) we save them 
+            OR
+    we save them with "urllib.request" library EX: urllib.request.urlretrieve(imgsrc,"WebScrapping/scraped_images/"+str(num))
+
+    Image Scraping example : go to image_scarping.py 
