@@ -1,0 +1,115 @@
+NOTE: Here Explanation is given in terms of MYSQL Databse
+    AND These Command are performed on CLI MongoDB
+FOR Video Reference : https://youtu.be/-56x56UppqQ
+
+LIST OF ALL OPERATORS : https://www.bmc.com/blogs/mongodb-operators/
+
+what is Mongo DB:
+    It is a No SQl Database (Means it does not use concept of Tables and ROws).
+    It is similiar to Firebase Database.
+        
+    -->BASIC TERMS (in comparison to MySQL):
+        Database (same as DataBase)
+        Collection (same as Table)
+        Documents (Columns or Roms) : It follows concept of Key and value to store Data in Collection or ("Table")
+
+    We can use Monog Through Shell or GUI (Mongo Compass) which is similar to "phpMyAdmin"
+
+
+Basic Commands:
+
+    --> DDL(such as Create, Drop) Commnads : 
+        To create a Database there is not command like create : "use DB_name"(it will create a Database if not exist then or it will open it)
+        To Create a Collection(Table) : First go into the Databse then type "   db.createColection("Collection_name") "
+        To Drop a DataBase : First, Go into the DB then type " db.dropDatabase() "
+
+    --> DML(such as Insert, Update, Delete) :
+        To Insert Data in Collection (Table): " db.Collection_name.insert({ Key : "value" }  )    "
+                This Value can be a Array or another Collection 
+            For Example:
+                db.post.insert({
+                title: "Post 1",
+                body: "First Post of Mine",
+                likes: 10,
+                author:{
+                    name: "Donald Duck",
+                    age: 25
+                },
+                tags:['news','post','article'],
+                date : Date()
+            })
+
+        To Insert Multiple Data at Same Time :  "   db.Collection_name.insertMany([{Key: VAlue} , {Key2: VAlue2} , {Key3: VAlue3}])    "
+            For Example:
+                db.post.insertMany([{
+                title: "Post2",
+                body: "This Post is on MongoDB",
+                likes: 5,
+                date: Date()
+            },
+            {
+                title: "Post3",
+                body: "This Post is on Python",
+                likes: 4,
+                date: Date()
+            },
+            {
+                title: "Post4",
+                body: "This Post is on Scraping",
+                likes: 7,
+                date: Date()
+            }])
+
+        To update only specific Data: 
+            
+            --> set Operator:    "   db.Collection_name.update({Key : Value} , { $set:{Key1 : value1 ,.. Key N : value N  } })    "
+                In update function 1st parameter defines what to update and 2nd parameter define what value to be updated
+                For Example:
+                    db.post.update({title : "Post 1"}, {
+                    $set: {
+                        title : "Post1"
+                    }
+                    })
+
+            --> upsert :    "   db.Collection_name.update({Key : Value} ,{Key1 : value1 ,.. Key N : value N  } , {upsert : True})    "
+                It will replace the whole data with 2nd argument 
+                For Eaxmple:
+                    db.post.update({title : "Post2"}, {author : {name : "Jhon Doe", age :35 }},{upsert : "True"})
+
+        To Delete : "   db.Collection_name.remove({ Key : value })    "
+            For Example:
+                db.post.remove({title : "Post1"})
+
+    --> DQL(such as Select ) :
+            To select we have to use find() function : "    db.Collection_name.find()    " To display all the record
+            To  Display Data in Good Manner          : "    db.Collection_name.find().pretty()    " To display all the record in readable way
+            For Specific record         : "   db.Collection_name.find( {Key : Value }} )  "
+            For Sub Title or Sub query  : "   db.Collection_name.find({  Key :{ $elemMatch : {key : value} } })  " 
+                For Example:
+                    db.post.find({comments : { $elemMatch : {user : "Ron Weasly"}}}).pretty()
+
+            Use of Operator in FIND :   "    db.Collection_name.find({Key : { Operator_Name : value  }})   "
+                    To check Operator name Go see top operaor link.
+    
+
+
+OPERATIONS:
+    1) sort(): 
+        To sort data in this : "    db.find().sort({key : 1/-1})    "  Here 1 stand for Ascending and -1 stand for Descending
+        For Better View use   ".pretty()"
+
+    2) Count():
+        To Count the data               : "    db.Collection_name.count()    "
+        To Count the a specific data    : "    db.Collection_name.find({Key:Value}).count()    "
+    
+    3) limit():
+        To limit the data Which is Displayed :  "    db.Collection_name.find().limit(int)    "
+
+    4) forEach():
+        It is used as Loop where ".find()" and "function(var_name)" inside forEach is mandatory.
+        Example:
+         db.post.find().forEach(function(doc){print("Blog Title" + doc.title + " Blog likes" + doc.likes)})
+
+    5) findOne():
+        Similar to Find just it will return only one Data.
+    
