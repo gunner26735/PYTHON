@@ -54,4 +54,7 @@ DTL : Django Template Language
         
         S6  :we can also pass dictionary inside render as a 3rd parameter
         S7  :To access that dictionary in html file we use {{KEY}}
-        S8  :To fetch values of GET and POST passed in "views.py" use request.GET[] OR request.POST[]  
+        S8  :To fetch values of GET and POST passed in "views.py" use request.GET[] OR request.POST[]   
+
+When USING POST we have to send a CSRF verfication code which is neccessary for protection. It is by default provided in "MIDDELWARE"
+    By using jinja code we have to send token   " {% csrf_token %} "    like this..
