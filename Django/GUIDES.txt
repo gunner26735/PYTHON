@@ -1,0 +1,57 @@
+MVT : M = Model , V = View , T = template
+Model is for Data
+View is for HTML 
+
+FOR MORE INFO LOOK HERE: https://docs.djangoproject.com/en/3.2/intro/tutorial01/
+
+S1  :TO install Django we need to First install python and then pip (Mostly installed with python)
+S2  :Then Install using pip command virtualenv-win
+S3  :Now , create a virtual env "mkvirtualenv env_name" 
+S4  :Install Django after createing virtualenv 
+S5  :Then create project Folder using "django-admin startproject project_name"
+S6  :Navigate into that folder
+
+INFO:
+    In your project_name folder there will be 2 Files(1 dir, 1 python):
+        1) Dir named after your project_name:
+            In your project_name folder there will be 5 python files:
+                which were used in we application development such as urls for stroing url.
+        
+        2) manage.py file : this file will be used to run your server 
+            TO RUN THE SERVER type : "python manage.py runserver"
+
+
+TO Continue your work in virtual Enviorment TYPE : "workon virtualenv_name"
+
+TO create a new app in django within that project TYPE : "python manage.py startapp app_name"
+
+For Video guidance : https://youtu.be/4UMs7DxWn_Q   OR TELUSKO
+How to run an APP:
+    S1  :The new app which we created using command "python manage.py startapp app_name". First navigate in it.
+    S2  :Create a new "urls.py" file to map the admin app with new app
+    S3  :"import django.urls from path "   and create a list view of URL enter value of path()  (libraries : from . import views )
+    S4  :Now create the function in view.py which you have defined in path() function
+    S5  :THe function in view accept a "request" parameter 
+        REMEMBER : Whenever you recieve something in request it shuold be returned using response (use django.http from HTTPResponse)
+
+    S6  :After following above steps now we map the URL with the admin app "urls.py" python file
+    S7  :Open "urls.py" of admin app and add your URL like this :
+            path("", include("myfirst.urls")),
+
+
+
+DTL : Django Template Language 
+    It already in use in settings.py
+    In these templates we are going to create our HTML Files For that:
+        S1  :Create a Directory in root directory name it anything 
+        S2  :Now in this directory create your HTML Files
+        S3  :Now, we have to set this directory in "settings.py" for python to know
+        S4  :In templates Dictionary Key add your directory path like this  
+            For example : [os.path.join(BASE_DIR,'templates')]
+        
+        S5  :After setting the path we have render those files in "views.py" of app which you want to display
+            Like this : return render(request,'hello.html')
+        
+        S6  :we can also pass dictionary inside render as a 3rd parameter
+        S7  :To access that dictionary in html file we use {{KEY}}
+        S8  :To fetch values of GET and POST passed in "views.py" use request.GET[] OR request.POST[]  
