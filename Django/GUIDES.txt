@@ -1,6 +1,11 @@
 MVT : M = Model , V = View , T = template
-Model is for Data
-View is for HTML 
+
+    Here , Model used to fetch or represent data.
+    Then , Template which we called a html/css file it is used to display the data
+    at last , View, where we are going to write our bussiness logic
+
+MVT ref : https://youtu.be/GGkFg52Ot5o
+
 
 FOR MORE INFO LOOK HERE: https://docs.djangoproject.com/en/3.2/intro/tutorial01/
 
