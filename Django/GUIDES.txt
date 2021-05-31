@@ -63,3 +63,34 @@ DTL : Django Template Language
 
 When USING POST we have to send a CSRF verfication code which is neccessary for protection. It is by default provided in "MIDDELWARE"
     By using jinja code we have to send token   " {% csrf_token %} "    like this..
+
+
+
+    WHEN WORKING ON NEW PORJECT OR WEB APP
+
+        S1 : Create a Template(or any name) FOlder to store your all "HTML" FIles ONLY.
+        S2 : Then, Create a new folder to store your all CSS, JS & BOOTSTRAP files .
+        S3 : After, that create again a new directory so that DJANGO can move all your assests into directory created in S3
+        S4 : Now, we have to configure DJANGO to identify all assests where they are actually Putted.
+        S5 : To configure it go into "settings.py" and add a STATICFILES_DIRS List and STATIC_ROOT 
+            FOr example: 
+                        STATICFILES_DIRS = [os.path.join(BASE_DIR,"static")]
+                        STATIC_ROOT = os.path.join(BASE_DIR,"assets")
+        S6 : Then write command python manage.py collectstatic
+        S7 : Above command will move your Files from S2 created directory to S3 created Directory.
+        S8 : Then add this code in HTML file where you hae to import all the assests:
+            {% load static %} 
+            <link rel="stylesheet" type="text/css" href="{% static 'plugins/OwlCarousel2-2.2.1/owl.carousel.css' %}">
+        path should be writen like above.
+
+
+Now any Class regarding Data from Database must be added in "model.py" file
+
+JINJA Syntax:
+    {% for var in List/Dict %}
+        //body
+    {% endfor %}
+
+    {% if condition %}
+        //body
+    {% endif %}
