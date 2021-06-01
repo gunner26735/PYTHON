@@ -84,6 +84,25 @@ When USING POST we have to send a CSRF verfication code which is neccessary for 
         path should be writen like above.
 
 
+FOR TROUBlE in COnnecting MYSQL : https://izziswift.com/error-loading-mysqldb-module-did-you-install-mysqlclient-or-mysql-python/
+        Steps to connect with DATABASE :    Installation specific to MYSQL
+
+            S1 : First, we have to do changes in settings.py.
+            S2 : Navigate to Database lists where you have to add ENGINE string as per DB , NAME (DB) ,USER and PASSWORD 
+            S3 : Now, we have to add Connector Module in some case like MYSQL you need a installer for connector.
+            S4 : For further error refer just above steps to connect DB 
+            S5 : We also have to mention our app like this in list of INSTALLED_APPS
+                INSTALLED_APPS = [
+                        'travello.apps.TravelloConfig',
+            S6 : To verify a Successfull connection is established or not : Run Command python manage.py runserver
+
+            // OPtional if you dont like to create query for DB 
+            S7 : Then run Command python manage.py makemigrations this will migrate your Created class in models.py 
+            S8 : Above result in creation of '0001_inital.py' file in migrations Directory
+            S9 : Now to create a TAble : use command 'python manage.py sqlmigrate travello 0001'
+            S10 : This will only create a database and model within your system to create it on Database
+            S11 : write 'python manage.py migrate' this will create table on database
+
 Now any Class regarding Data from Database must be added in "model.py" file
 
 JINJA Syntax:
