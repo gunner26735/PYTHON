@@ -113,3 +113,30 @@ JINJA Syntax:
     {% if condition %}
         //body
     {% endif %}
+
+
+    DJANGO ADMIN:
+        ->Django Provide us admin panel By default just we have to create its user and password.
+            for that:
+                "python manage.py createsuperuser"
+            Then enter necessray details after Successfull user creation you can enter admin panel
+
+        ->Now , if you want to use your model in your admin panel then:
+            S1 : First, we have to register our model in "admin.py"
+            S2 : for that import class from models
+            S3 : using method admin.site.register(class_name) register it  
+
+    -> WHEN dealing with media DJANGO can also manage this:
+        S1 : For that , we have to add MEDIA_URL and MEDIA_ROOT in "setting.py"
+            example:
+                MEDIA_URL = '/media/'
+                MEDIA_ROOT = os.path.join(BASE_DIR,'media')
+
+        S2 : After that we have to mention it in "urls.py" of main app 
+            EXAMPLE:
+                    urlpatterns = urlpatterns + static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
+        S3 :  Now, it wont find static and settings in above code for we have to import it
+            from django.conf import settings
+            from django.conf.urls.static import static
+
+        S4 : Remeber , that set media path like this {{variable.img.url}}    
