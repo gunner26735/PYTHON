@@ -52,7 +52,7 @@ DTL : Django Template Language
         S2  :Now in this directory create your HTML Files
         S3  :Now, we have to set this directory in "settings.py" for python to know
         S4  :In templates Dictionary Key add your directory path like this  
-            For example : [os.path.join(BASE_DIR,'templates')]
+            For example : 'DIRS' : [os.path.join(BASE_DIR,'templates')]
         
         S5  :After setting the path we have render those files in "views.py" of app which you want to display
             Like this : return render(request,'hello.html')
@@ -87,6 +87,9 @@ When USING POST we have to send a CSRF verfication code which is neccessary for 
 FOR TROUBlE in COnnecting MYSQL : https://izziswift.com/error-loading-mysqldb-module-did-you-install-mysqlclient-or-mysql-python/
         Steps to connect with DATABASE :    Installation specific to MYSQL
 
+        IF ERROR IN CONNECTING MYSQL TRY this : import pymysql
+                                                pymysql.install_as_MySQLdb()
+
             S1 : First, we have to do changes in settings.py.
             S2 : Navigate to Database lists where you have to add ENGINE string as per DB , NAME (DB) ,USER and PASSWORD 
             S3 : Now, we have to add Connector Module in some case like MYSQL you need a installer for connector.
@@ -98,10 +101,14 @@ FOR TROUBlE in COnnecting MYSQL : https://izziswift.com/error-loading-mysqldb-mo
 
             // OPtional if you dont like to create query for DB 
             S7 : Then run Command python manage.py makemigrations this will migrate your Created class in models.py 
-            S8 : Above result in creation of '0001_inital.py' file in migrations Directory
-            S9 : Now to create a TAble : use command 'python manage.py sqlmigrate travello 0001'
-            S10 : This will only create a database and model within your system to create it on Database
-            S11 : write 'python manage.py migrate' this will create table on database
+            S8 : We also Have to add our created MODEL in "admin.py"
+
+                LIKE this : admin.site.register(Users_data)
+
+            S9 : Above result in creation of '0001_inital.py' file in migrations Directory
+            S10 : Now to create a TAble : use command 'python manage.py sqlmigrate travello 0001'
+            S11 : This will only create a database and model within your system to create it on Database
+            S12 : write 'python manage.py migrate' this will create table on database
 
 Now any Class regarding Data from Database must be added in "model.py" file
 
